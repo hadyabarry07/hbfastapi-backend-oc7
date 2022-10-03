@@ -11,11 +11,13 @@ from fastapi.encoders import jsonable_encoder
 from fastapi.responses import JSONResponse, HTMLResponse
 
 
+# Create the app object
+model = open("model.pkl", "rb")
 # Create FastAPI instance
 app = FastAPI()
 
 
-clf = pickle.load(open(r'C:\Users\hadya\OneDrive\Documents\myfastapi\model\model.pkl', 'rb'))
+clf = pickle.load(model)
 
 #In this example, we try to serialize the NumPy Array into JSON String
 class NumpyArrayEncoder(JSONEncoder):
