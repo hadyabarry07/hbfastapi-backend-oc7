@@ -9,12 +9,26 @@ import uvicorn
 from fastapi import FastAPI, File
 from fastapi.encoders import jsonable_encoder
 from fastapi.responses import JSONResponse, HTMLResponse
+from fastapi.middleware.cors import CORSMiddleware
 
 
 # Create the app object
 clf = pickle.load(open("model.pkl", "rb"))
 # Create FastAPI instance
 app = FastAPI()
+
+origins = [
+    "https://oc-p7-streamlit.herokuapp.com"
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 
 
 
