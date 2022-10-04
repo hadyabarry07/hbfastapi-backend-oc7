@@ -13,7 +13,10 @@ from fastapi.middleware.cors import CORSMiddleware
 
 
 # Create the app object
-clf = pickle.load(open("model.pkl", "rb"))
+
+pickle_in = open("model.pkl", "rb")
+clf = pickle.load(pickle_in)
+
 # Create FastAPI instance
 app = FastAPI()
 
