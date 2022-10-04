@@ -12,12 +12,11 @@ from fastapi.responses import JSONResponse, HTMLResponse
 
 
 # Create the app object
-model = open("model.pkl", "rb")
+clf = pickle.load(open("model.pkl", "rb"))
 # Create FastAPI instance
 app = FastAPI()
 
 
-clf = pickle.load(model)
 
 #In this example, we try to serialize the NumPy Array into JSON String
 class NumpyArrayEncoder(JSONEncoder):
