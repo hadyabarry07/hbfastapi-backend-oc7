@@ -44,7 +44,7 @@ class NumpyArrayEncoder(JSONEncoder):
 
 
 # Create POST endpoint with path '/predict'
-@app.get("/predict")
+@app.post("/predict")
 async def predict(file: bytes = File(...)):
     print('[+] Initiate Prediction')
     file_obj = io.BytesIO(file)
